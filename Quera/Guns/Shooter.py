@@ -46,10 +46,14 @@ class Shooter:
         elif target_distance > Guns["range"][self.ind]:
             return 0
         elif self.count == 0:
-            print(0)
+            raise Exception("you don't have a bullet'")
+        elif aim_x > target_x + 10 or aim_x < target_x:  # check if aim_x is right
+            return 0
+        elif aim_y > target_y + 10 or aim_y < target_y:  # check if aim_y is right
             return 0
         else:
             print(Guns["power"][self.ind] * Bullets["damage"][self.bullet])
+            self.count -= 1
             return Guns["power"][self.ind] * Bullets["damage"][self.bullet]
 
 # now we test what we wrote  here
